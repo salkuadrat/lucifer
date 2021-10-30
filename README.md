@@ -1,5 +1,7 @@
 # Lucifer Lightbringer
 
+![](lucifer.png)
+
 Lucifer is a fast, light-weight web framework in dart. 
 
 It's built on top of native `HttpServer` to provide a simple way to fulfill the needs of many modern web server this day.
