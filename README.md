@@ -1693,7 +1693,7 @@ print('File is saved at ${f.path}');
 
 ## Templating
 
-Lucifer provides default templating with `Mustache` engine. It uses a package [`mustache_template`](https://pub.dev/packages/mustache_template) that's implemented from the [official mustache spec](http://mustache.github.io/).
+Lucifer provides default templating with `Mustache` engine. It uses a package [`mustache_template`](https://pub.dev/packages/mustache_template) that's implemented from the [official mustache spec](https://mustache.github.io/).
 
 By default, to keep the core framework light-weight, lucifer doesn't attach any template engine to your app. To use the `mustache` middleware, you need to apply it first.
 
@@ -1759,7 +1759,7 @@ Now if you add this `index.html` file to the `template` directory.
 
 Then run the app and open it in the browser, it will shows another html page containing `Hello Detective from template`
 
-For more complete details to use `Mustache` template engine, you can read the [mustache manual](http://mustache.github.io/mustache.5.html).
+For more complete details to use `Mustache` template engine, you can read the [mustache manual](https://mustache.github.io/mustache.5.html).
 
 To use other engines, such as [jinja](https://pub.dev/packages/jinja) or [jaded](https://pub.dev/packages/jaded), you can manage the template rendering yourself, and then send the html by calling `res.send()`
 
