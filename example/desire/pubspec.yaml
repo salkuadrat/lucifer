@@ -1,0 +1,15 @@
+name: desire
+description: A simple lucifer application.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: '>=2.14.0 <3.0.0'
+
+dependencies:
+  lucifer: 
+    path: ../../
+
+dev_dependencies:
+  lints: ^1.0.0
+    
