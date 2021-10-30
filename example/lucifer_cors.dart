@@ -9,7 +9,7 @@ void main() async {
   app.get('/', (Req req, Res res) async {
     await res.send('Hello Detective');
   });
-  
+
   await app.listen(port);
   print('Server running at http://${app.host}:${app.port}');
 }

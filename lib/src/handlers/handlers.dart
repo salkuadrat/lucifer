@@ -16,7 +16,6 @@ part 'socket.dart';
 part 'string.dart';
 
 class DataHandler<T> {
-  
   final FutureOr Function(Req, Res, T) _process;
 
   DataHandler(this._process);
@@ -30,9 +29,9 @@ class DataHandler<T> {
   }
 }
 
-/// 
+///
 /// beware of changing the order of this handlers
-/// 
+///
 List<DataHandler> handlers = [
   numericHandler,
   stringHandler,

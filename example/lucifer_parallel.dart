@@ -29,6 +29,6 @@ Future<App> startApp() async {
 
   await app.listen(port);
   print('Server running at http://${app.host}:${app.port}');
-  
+
   return app;
 }

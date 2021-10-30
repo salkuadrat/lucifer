@@ -3,9 +3,9 @@ import '../response.dart';
 import '../typedef.dart';
 import '../security/security.dart';
 
-/// 
+///
 /// Middleware to handle all security.
-/// 
+///
 Callback security() {
   return (Req req, Res res) {
     contentSecurityPolicy()(req, res);

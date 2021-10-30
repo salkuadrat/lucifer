@@ -3,9 +3,9 @@ import '../request.dart';
 import '../response.dart';
 import '../typedef.dart';
 
-/// 
+///
 /// Middleware to parse json request body.
-/// 
+///
 Callback json() {
   return (Req req, Res res) async {
     if (req.isJson) {

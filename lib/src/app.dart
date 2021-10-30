@@ -130,9 +130,9 @@ class App {
   ///
   FormParser form() => FormParser();
 
-  /// 
+  ///
   /// Create a socket server
-  /// 
+  ///
   SocketServer socket(Req req, Res res) => SocketServer(req, res);
 
   /// Returns local data associated with the specified key
@@ -602,7 +602,7 @@ class App {
     LocalData local = initLocal[1];
 
     local.set('___app___', this);
-    
+
     Req req = Req(localKey, request);
     Res res = Res(localKey, request.response);
 

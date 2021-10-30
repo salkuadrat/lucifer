@@ -37,16 +37,16 @@ class SessionStore {
     return Uuid().v1();
   }
 
-  /// 
+  ///
   /// To be implemented by subclasses of `SessionStore` for use case
-  /// 
+  ///
   /// ```dart
   /// store.on('connect', () {
-  ///   
+  ///
   /// });
-  /// 
+  ///
   /// store.on('disconnect', () {
-  ///   
+  ///
   /// });
   /// ```
   void on(String event, Function callback) {}

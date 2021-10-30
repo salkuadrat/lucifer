@@ -1,6 +1,6 @@
-/// 
+///
 /// check if `data` is a date
-/// 
+///
 bool isDate(data) {
   try {
     DateTime.parse(data);
@@ -13,7 +13,7 @@ bool isDate(data) {
 /// Check if `data` is a date after the specified date
 ///
 /// If `date` is not passed, it defaults to now.
-/// 
+///
 bool isAfter(data, [date]) {
   if (date == null) {
     date = DateTime.now();

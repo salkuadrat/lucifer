@@ -302,22 +302,22 @@ class Router {
       // find index of route GET '/:id' in this router
       int index = _app.routes
           .indexWhere((r) => r.method == Method.get && r.path == pathId);
-      
+
       // This is related to the process of adding standard Controller routes
       // defined in app.route() method (app.dart lines 476 - 481).
       //
       // Insert the additional route to the index before route get '/:id'
       // so it won't be mistakenly recognised as route '/:id'
-      // 
+      //
       // For example, when we want to add route GET /user/vip into /user
-      // it can be mistakenly recognised by route /user/:id 
+      // it can be mistakenly recognised by route /user/:id
       // as a user with id = vip
-      // 
+      //
       // That's why all route /:id should be put in the last.
-      // 
+      //
       // If index == -1, it means there're no standard routes before,
       // so it's safe to use _app.addRoute()
-      // 
+      //
       if (!standardPath && index != -1) {
         _app.insertRoute(
             index,

@@ -1,6 +1,6 @@
-/// 
+///
 /// Check if `data` is a UUID (version 3, 4 or 5).
-/// 
+///
 bool isUUID(data, [version]) {
   if (version == null) {
     version = 'all';
@@ -24,5 +24,7 @@ bool isUUID(data, [version]) {
   };
 
   RegExp? pattern = patterns[version];
-  return data is String && pattern != null && pattern.hasMatch(data.toUpperCase());
+  return data is String &&
+      pattern != null &&
+      pattern.hasMatch(data.toUpperCase());
 }

@@ -4,7 +4,7 @@ import '../utils/path.dart';
 import 'route.dart';
 
 class RouteMatcher {
-  /// 
+  ///
   /// Filter routes that match the speficied method and uri.
   ///
   static Iterable<Route> match({
@@ -13,7 +13,7 @@ class RouteMatcher {
     required List<Route> routes,
   }) sync* {
     String p = cleanPath(path);
-    
+
     for (Route route in routes) {
       if (route.method != method && route.method != Method.all) {
         continue;
@@ -25,7 +25,7 @@ class RouteMatcher {
     }
   }
 
-  /// 
+  ///
   /// Generate request params from the specified route and uri string.
   ///
   static Map<String, dynamic> params(String route, String uri) {

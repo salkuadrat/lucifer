@@ -24,7 +24,6 @@ void main() {
 
     app.get('/test2', (req, res) async {
       return _Serializable();
-
     });
     app.get('/not', (req, res) async {
       return _NotSerializable();

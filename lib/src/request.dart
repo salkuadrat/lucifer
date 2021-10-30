@@ -73,8 +73,8 @@ class Req {
   }
 
   ///
-  /// Logger attached to this request 
-  /// 
+  /// Logger attached to this request
+  ///
   /// ```dart
   /// req.log.v(message);
   /// req.log.d(message);
@@ -132,7 +132,7 @@ class Req {
     }
     return null;
   }
-  
+
   ///
   /// Holds the list of uploaded files from multipart request body
   ///
@@ -337,8 +337,8 @@ class Req {
   ///
   bool get xhr => headers.value('X-Requested-With') == 'xmlhttprequest';
 
-  /// 
+  ///
   /// Upgrade this request into a web socket
-  /// 
+  ///
   Future<WebSocket> get socket => WebSocketTransformer.upgrade(_req);
 }

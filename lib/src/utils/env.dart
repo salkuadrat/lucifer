@@ -17,6 +17,6 @@ dynamic env(String key) {
       }
     } catch (_) {}
   }
-  
+
   return value;
 }

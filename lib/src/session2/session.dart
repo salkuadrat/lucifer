@@ -197,7 +197,7 @@ class SessionManager {
     if (_tail == session) {
       _tail = prev;
     }
-    
+
     if (_head == session) {
       _head = next;
       // We removed the head element, start new timer.

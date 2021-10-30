@@ -3,49 +3,49 @@ import '../typedef.dart';
 import '../utils/path.dart';
 
 class Route {
-  /// 
+  ///
   /// Path of this route
-  /// 
+  ///
   final String path;
 
-  /// 
+  ///
   /// Http Method of this route
-  /// 
+  ///
   final Method method;
 
-  /// 
+  ///
   /// List of combined stack of middlewares and callback
-  /// 
+  ///
   final List<Callback> stack;
 
-  /// 
+  ///
   /// List of middlewares atteached to this route
-  /// 
+  ///
   final List<Callback> middleware;
 
-  /// 
+  ///
   /// The handler callback for this route
-  /// 
+  ///
   Callback? callback;
 
-  /// 
+  ///
   /// Regular expression matcher associated with the route path
-  /// 
+  ///
   final RegExp matcher;
 
-  /// 
+  ///
   /// Check if this route has callback
-  /// 
+  ///
   bool get hasCallback => callback != null;
 
-  /// 
+  ///
   /// Checks if this route path contains wildcard (*)
-  /// 
+  ///
   bool get hasWildcard => path.contains('*');
 
-  /// 
+  ///
   /// Check if this route is not a wildcard path
-  /// 
+  ///
   bool get notWildcard => path != '*';
 
   Route({
@@ -56,7 +56,7 @@ class Route {
   })  : stack = [...middleware, if (callback != null) callback],
         matcher = _matcher(path);
 
-  /// 
+  ///
   /// Build a Regex matcher from route path.
   ///
   static RegExp _matcher(String path) {

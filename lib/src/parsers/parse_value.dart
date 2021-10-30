@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 /// Parse string value into its appropriate type
-/// 
+///
 parseValue(String value) {
   // try parse null
   final isNull = value.trim().toLowerCase() == 'null';
@@ -38,6 +38,6 @@ parseValue(String value) {
   if (numValue != null && !numValue.isNaN) {
     return numValue;
   }
-  
+
   return value;
 }

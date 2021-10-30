@@ -1,6 +1,6 @@
-/// 
+///
 /// Clean route path before being used to build Regexp matcher
-/// 
+///
 String cleanPath(String path) {
   path = path.trim();
 

@@ -11,7 +11,7 @@ void main() async {
   });
 
   await app.listen(port);
-  
+
   print('Server running at http://${app.host}:${app.port}');
   app.checkRoutes();
 }

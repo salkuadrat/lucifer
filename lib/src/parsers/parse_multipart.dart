@@ -16,7 +16,7 @@ Future parseMultipart(
   void Function()? onEndListener,
 }) async {
   var multiparts = await req.request.multiparts;
-  
+
   Map<String, dynamic> body = {};
   List<UploadedFile> files = [];
 
@@ -70,5 +70,3 @@ Future parseMultipart(
 
   return [body, files];
 }
-
-

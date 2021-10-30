@@ -1,19 +1,10 @@
-/// 
+///
 /// HTTP Methods supported by Lucifer
-/// 
+///
 /// Reference:
 /// https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
-/// 
-enum Method {
-  get,
-  post,
-  put,
-  delete,
-  patch,
-  options,
-  head,
-  all
-}
+///
+enum Method { get, post, put, delete, patch, options, head, all }
 
 extension StringExtension on String {
   /// Convert string to [Method] enum

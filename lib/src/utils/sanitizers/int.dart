@@ -1,6 +1,6 @@
-/// 
+///
 /// Convert the input to an integer, or NAN if the input is not an integer
-/// 
+///
 num toInt(data, {int radix = 10}) {
   if (data is int) {
     return data;

@@ -38,14 +38,14 @@ Map<String, dynamic> parseUrlEncoded(String body) {
 
           // build chained map from the last key
           // start the map with { key3: value }
-          Map map = { lastKey: parseValue(value) };
+          Map map = {lastKey: parseValue(value)};
 
           // remove the last key and then iterate from last (reversed)
           // to chain the map
           keys.removeLast();
 
           for (String key in keys.reversed) {
-            map = { key: map };
+            map = {key: map};
           }
 
           // after chained, the map will be like
@@ -67,11 +67,11 @@ Map<String, dynamic> parseUrlEncoded(String body) {
           data[key] = parseValue(value);
         }
       } else {
-        // for query without value like `enabled` in 
+        // for query without value like `enabled` in
         // http://luciferdeckerstar.com/search?q=detective&enabled
         //
         // set it into data['enabled'] = true
-        // 
+        //
         String key = Uri.decodeQueryComponent(query);
         data[key] = true;
       }

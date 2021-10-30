@@ -14,7 +14,7 @@ Callback mustache([String? views]) {
     res.renderer = (String view, Map<String, dynamic> data) async {
       String directory = views ?? 'views';
       File file = File('$directory/$view.html');
-      
+
       if (await file.exists()) {
         Template template = Template(await file.readAsString());
         String html = template.renderString(data);

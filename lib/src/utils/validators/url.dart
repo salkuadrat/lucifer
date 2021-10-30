@@ -186,7 +186,7 @@ bool isFQDN(
       return false;
     }
   }
-  
+
   return true;
 }
 

@@ -1,6 +1,6 @@
-/// 
+///
 /// replace `<`, `>`, `&`, `'` and `"` with HTML entities
-/// 
+///
 String escape(data) {
   if (data is! String) {
     return data;

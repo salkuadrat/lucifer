@@ -81,14 +81,13 @@ class Res {
     return local<App>('___app___');
   }
 
-
   Req? get _req {
     return local<Req>('___req___');
   }
 
   ///
-  /// Logger attached to this response 
-  /// 
+  /// Logger attached to this response
+  ///
   /// ```dart
   /// res.log.v(message);
   /// res.log.d(message);
@@ -318,7 +317,7 @@ class Res {
     bool signed = false,
   }) async {
     Cookie cookie = Cookie(name, value);
-    
+
     cookie.domain = domain;
     cookie.path = path;
     cookie.expires = expires;
@@ -350,10 +349,10 @@ class Res {
     _res.cookies.clear();
   }
 
-  /// 
-  /// Secure cookies if the app use secure cookie mechanism, 
+  ///
+  /// Secure cookies if the app use secure cookie mechanism,
   /// either set from `secureCookie` middleware or from `session` middleware
-  /// 
+  ///
   FutureOr _secureCookies() async {
     if (secureCookie is Cookies) {
       for (int i = 0; i < cookies.length; i++) {
@@ -386,7 +385,7 @@ class Res {
     }
 
     _res.write(data);
-    
+
     await _res.flush();
     await close();
 
@@ -503,7 +502,7 @@ class Res {
     _res.add(data);
   }
 
-  /// 
+  ///
   /// Adds all elements of the given [stream].
   ///
   /// Returns a [Future] that completes when
@@ -519,7 +518,7 @@ class Res {
     await _res.addStream(stream);
   }
 
-  /// 
+  ///
   /// Close the target consumer.
   ///
   /// NOTE: Writes to the [IOSink] may be buffered, and may not be flushed by

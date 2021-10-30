@@ -1,5 +1,5 @@
 ///
-/// Log object to be used as interface between 
+/// Log object to be used as interface between
 /// logging middleware and Req Res
 ///
 class Log {

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 /// Parse json request body into map
-/// 
+///
 Map<String, dynamic> parseJson(String body) {
   final json = jsonDecode(body);
 

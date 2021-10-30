@@ -1,6 +1,6 @@
-/// 
+///
 /// Convert the input to a float, or NAN if the input is not a float
-/// 
+///
 double toFloat(data) {
   if (data is double) {
     return data;
@@ -13,9 +13,9 @@ double toFloat(data) {
   }
 }
 
-/// 
+///
 /// Convert the input to a float, or NAN if the input is not a float
-/// 
+///
 double toDouble(data) {
   return toFloat(data);
 }

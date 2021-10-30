@@ -84,13 +84,14 @@ void main() {
   });
 
   test('it should correctly match routes that have a partial match', () {
-    final testRoutes = [  
+    final testRoutes = [
       Route(method: Method.get, path: '/image', callback: _callback),
       Route(method: Method.get, path: '/imageSource', callback: _callback),
     ];
 
     expect(
-        RouteMatcher.match(method: Method.get, path: '/imagesource', routes: testRoutes)
+        RouteMatcher.match(
+                method: Method.get, path: '/imagesource', routes: testRoutes)
             .map((e) => e.path)
             .toList(),
         ['/imageSource']);
@@ -165,7 +166,7 @@ void main() {
       Route(method: Method.get, path: '[a-z]{5}', callback: _callback),
       Route(method: Method.get, path: '(a|b)/c', callback: _callback),
     ];
-    
+
     expect(match('a/b', testRoutes), <String>[]);
     expect(match('3/a', testRoutes), <String>[]);
     expect(match('x/323', testRoutes), <String>['[a-z]+/[0-9]+']);

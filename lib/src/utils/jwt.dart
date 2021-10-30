@@ -1,12 +1,12 @@
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 
-/// 
+///
 /// JSON Web Token Handler
-/// 
+///
 class Jwt {
-  /// 
+  ///
   /// Sign JSON Web Token
-  /// 
+  ///
   String sign(
     Map<String, dynamic> payload,
     String secret, {
@@ -38,9 +38,9 @@ class Jwt {
     );
   }
 
-  /// 
+  ///
   /// Verify JSON Web Token
-  /// 
+  ///
   Map<String, dynamic>? verify(
     String token,
     String secret, [

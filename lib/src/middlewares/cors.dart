@@ -2,9 +2,9 @@ import '../request.dart';
 import '../response.dart';
 import '../typedef.dart';
 
-/// 
+///
 /// Middleware to handle CORS.
-/// 
+///
 Callback cors({
   dynamic origin = '*',
   String methods = 'GET,HEAD,PUT,PATCH,POST,DELETE',

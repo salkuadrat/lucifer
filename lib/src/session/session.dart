@@ -13,13 +13,9 @@ class Session {
 
   bool get hasCookie => cookie != null;
 
-  void touch() {
+  void touch() {}
 
-  }
-
-  void resetMaxAge() {
-
-  }
+  void resetMaxAge() {}
 
   void save() {
     // req.sessionStore?.set(id, this);

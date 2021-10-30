@@ -18,9 +18,9 @@ bool isHalfWidth(data) {
   return data is String && pattern.hasMatch(data);
 }
 
-/// 
+///
 /// Check if `data` contains a mixture of full and half-width chars
-/// 
+///
 bool isVariableWidth(data) {
   return isFullWidth(data) && isHalfWidth(data);
 }

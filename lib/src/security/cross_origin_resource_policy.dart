@@ -4,7 +4,7 @@ import '../typedef.dart';
 
 ///
 /// This middleware sets the Cross-Origin-Resource-Policy header.
-/// 
+///
 Callback crossOriginResourcePolicy({String policy = 'same-origin'}) {
   List<String> allowed = [
     'same-origin',
