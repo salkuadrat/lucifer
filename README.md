@@ -166,7 +166,7 @@ await app.listen(port);
 print('Server running at http://${app.host}:${app.port}');
 ```
 
-Alternatively, we can use `app.listen()` as follows.
+Alternatively, we can also use `app.listen()` as follows.
 
 ```dart
 await app.listen(port, '127.0.0.1');
