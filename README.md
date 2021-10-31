@@ -20,7 +20,7 @@ $ dart pub global activate lucy
 $ lucy create desire
 ```
 
-The first command will activate lucifer command-line interface (CLI), named [lucy](https://pub.dev/packages/lucy), to be accessible in your terminal. And then `lucy create desire` creates a new project named `desire` in the `desire` directory. 
+The first command will activate lucifer command-line interface (CLI), named [lucy](https://pub.dev/packages/lucy), to be accessible from your terminal. Then `lucy create desire` creates a new project named `desire` in the `desire` directory. 
 
 Feel free to use any project name you want.
 
@@ -57,7 +57,7 @@ $ cd desire
 $ lucy run
 ```
 
-And open URL `http://localhost:3000` in your browser.
+Then open URL `http://localhost:3000` in your browser.
 
 If all went well, it will display `Hello Detective` and print this message in your terminal.
 
