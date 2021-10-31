@@ -210,7 +210,7 @@ void main() {
 
 For maximum security, we should use environment variables for important things, such as database configurations and JSON Web Token (JWT) secret.
 
-One more thing... if you open `.gitignore` file in the root directory, you can see `.env` is included there. It means our `.env` file will not be uploaded to remote repository like github, and the values inside will never be exposed to the public.
+One more thing... if you open `.gitignore` file in the root directory, you can see `.env` is included there. It means our `.env` file will not be uploaded to remote repository like github, and the values inside will never be exposed to public.
 
 ## Request Parameters 
 
