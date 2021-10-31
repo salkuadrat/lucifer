@@ -159,7 +159,7 @@ Lucifer provides two objects, `req` and `res`, that represents `Req` and `Res` i
 
 What we did before is sending a message string `Hello Detective` to the client using `res.send()`. This method sets the string in the response body, and then close the connection.
 
-The last line of our code starts the server and listen to the incoming requests on the specified `port`
+The last line of our code starts the server and listen for incoming requests on the specified `port`
 
 ```dart
 await app.listen(port);
