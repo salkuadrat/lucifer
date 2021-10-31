@@ -103,13 +103,13 @@ final app = App();
 
 Then we set the server port to `3000` from `.env` file that's located in your root project directory.
 
-Feel free to change with any port number you want.
+Feel free to change it with any port number you want.
 
 ```dart
 final port = env('PORT') ?? 3000;
 ```
 
-Once we have the `app` object, we tell it to listen to a GET request on path `/` by using `app.get()`
+Once we have the `app`, we tell it to listen to a GET request on path `/` by using `app.get()`
 
 ```dart
 app.get('/', (Req req, Res res) async {
