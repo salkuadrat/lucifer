@@ -155,7 +155,7 @@ Lucifer provides two objects, `req` and `res`, that represents `Req` and `Res` i
 
 `Req` is an HTTP request built on top of native `HttpRequest`. It holds all information about the incoming request, such as request parameters, query string, headers, body, and much more.
 
-`Res` is an HTTP response built on top of native `HttpResponse`. It's mostly used for manipulating response to be sent to the client.
+`Res` is an HTTP response built on top of native `HttpResponse`. It's mostly used for manipulating response and sending it to the client.
 
 What we did before is sending a message string `Hello Detective` to the client using `res.send()`. This method sets the string in the response body, and then close the connection.
 
