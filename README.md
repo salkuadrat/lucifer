@@ -169,12 +169,15 @@ print('Server running at http://${app.host}:${app.port}');
 Alternatively, we can also use `app.listen()` as follows.
 
 ```dart
+// listen to the specified port and host
 await app.listen(port, '127.0.0.1');
 
+// listen to the specified port with callback
 await app.listen(port, () {
   print('Server running at http://${app.host}:${app.port}');
 });
 
+// listen to the specified port and host with callback
 await app.listen(port, 'localhost', () {
   print('Server running at http://${app.host}:${app.port}');
 });
