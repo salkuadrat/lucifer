@@ -187,7 +187,7 @@ await app.listen(port, 'localhost', () {
 
 Environment is some set of variables known to a process (such as, ENV, PORT, etc). It's recommended to mimic production environment during development by reading it from `.env` file.
 
-When we run `lucy create`, a `.env` file is created in the root project directory that contains these default values.
+When we run `lucy create`, a `.env` file is created in the root project directory, containing these values.
 
 ```text
 ENV = development
