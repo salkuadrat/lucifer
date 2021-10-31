@@ -14,7 +14,7 @@ class Jwt {
     Duration? expiresIn,
     Duration? notBefore,
     bool noIssueAt = false,
-    String? audience,
+    Audience? audience,
     String? subject,
     String? issuer,
     String? jwtId,
