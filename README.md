@@ -109,7 +109,7 @@ Feel free to change it with any port number you want.
 final port = env('PORT') ?? 3000;
 ```
 
-Once we have the `app`, we tell it to listen to a GET request on path `/` by using `app.get()`
+Once we have the `app`, we tell it to listen to GET request on path `/` with `app.get()`
 
 ```dart
 app.get('/', (Req req, Res res) async {
