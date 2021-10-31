@@ -15,7 +15,7 @@ Lucifer is open, efficient, and has lots of built in features to perform dozen k
 You can start create a new project with lucy command.
 
 ```shell
-$ dart pub global activate lucy
+$ pub global activate lucy
 
 $ lucy create desire
 ```
