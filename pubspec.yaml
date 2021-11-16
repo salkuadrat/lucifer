@@ -1,6 +1,6 @@
 name: lucifer
-description: A fast, light-weight web framework in dart to provide a simple way to fulfill the needs of many modern web server this day.
-version: 1.0.3
+description: A fast, light-weight web framework to provide a simple way to fulfill the needs of many modern web server these days.
+version: 1.0.4
 homepage: https://github.com/salkuadrat/lucifer
 repo: https://github.com/salkuadrat/lucifer
 

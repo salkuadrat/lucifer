@@ -1,18 +1,18 @@
 # Lucifer Lightbringer
 
+![](lucifer.png)
+
 Lucifer is a fast, light-weight web framework in dart. 
 
-It's built on top of native `HttpServer` to provide a simple way to fulfill the needs of many modern web server this day.
+It's built on top of native `HttpServer` to provide a simple way to fulfill the needs of many modern web server these days.
 
-Lucifer is open, efficient, and has lots of built in features to perform dozen kinds of things.
-
-![](lucifer.png)
+Lucifer is open, efficient, and has lots of built-in features to handle dozen kind of things.
 
 ## Installation 
 
 [Install Dart SDK](https://dart.dev/get-dart)
 
-You can start create a new project with lucy command.
+You can start create a new project using lucy command.
 
 ```shell
 $ pub global activate lucy
@@ -20,7 +20,7 @@ $ pub global activate lucy
 $ lucy create desire
 ```
 
-The first command will activate lucifer command-line interface (CLI), named [lucy](https://pub.dev/packages/lucy), to be accessible from your terminal. Then `lucy create desire` creates a new project named `desire` in the `desire` directory. 
+The first command will activate lucifer command-line interface (CLI), named [Lucy](https://pub.dev/packages/lucy), to be accessible from your terminal. Then `lucy create desire` creates a new project named `desire` in the `desire` directory. 
 
 Feel free to use any project name you want.
 
@@ -300,7 +300,7 @@ for (var key in req.query.keys) {
 }
 ```
 
-Or you can access the value directly with `res.q()`
+Or you can access the value directly with `req.q()`
 
 ```dart
 req.q('username'); // same as req.query['username']
