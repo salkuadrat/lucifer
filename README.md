@@ -172,7 +172,7 @@ ENV = development
 PORT = 3000
 ```
 
-Then the value is called from the dart code using `env()` method.
+Then the value is accessed from the dart code using `env()` method.
 
 ```dart
 void main() {
