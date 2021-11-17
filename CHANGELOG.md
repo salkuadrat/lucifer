@@ -21,3 +21,7 @@
 ## 1.0.5
 
 - Update info about Lucy CLI
+
+## 1.0.6 
+
+- Update Lucy CLI with L command

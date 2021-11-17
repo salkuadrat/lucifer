@@ -13,12 +13,12 @@ It's built on top of native `HttpServer` to provide a simple way to fulfill the 
 You can start create a new project using lucy command.
 
 ```shell
-$ pub global activate lucy
+pub global activate lucy
 
-$ lucy create desire
+l create desire
 ```
 
-The first will activate lucifer command-line interface (CLI), named [Lucy](https://pub.dev/packages/lucy), to be accessible from your terminal. Then `lucy create desire` creates a new project named `desire` in the `desire` directory. 
+The first will activate lucifer command-line interface (CLI), named [Lucy](https://pub.dev/packages/lucy), to be accessible from your terminal. Then `l create desire` will create a new project in the `desire` directory. 
 
 Feel free to use any project name you want.
 
@@ -50,9 +50,8 @@ void main() {
 Test running it with command.
 
 ```shell
-$ cd desire
-
-$ lucy run
+cd desire
+l run
 ```
 
 Then open URL `http://localhost:3000` in your browser.
@@ -165,7 +164,7 @@ await app.listen(port, 'localhost', () {
 
 Environment is some set of variables known to a process (such as, ENV, PORT, etc). It's recommended to mimic production environment during development by reading it from `.env` file.
 
-When we run `lucy create`, a `.env` file is created in the root project directory, containing these values.
+When we run `l create`, a `.env` file is created in the root project directory, containing these values.
 
 ```text
 ENV = development
@@ -872,7 +871,7 @@ app.route('/user', user).get('/vip', user.vip);
 To help you with adding `Controller` to your project, Lucifer provides another command like this.
 
 ```shell
-$ lucy c post
+$ l c post
 ```
 
 These command will create a `post_controller.dart` file in the `/bin/controller` directory, and automatically fill it with a boilerplate `PostController` class.
@@ -880,7 +879,7 @@ These command will create a `post_controller.dart` file in the `/bin/controller`
 You can use it to create more than one `Controller` like this.
 
 ```shell
-$ lucy c post news user customer
+$ l c post news user customer
 ```
 
 ## Static Files
@@ -1712,7 +1711,7 @@ app.get('/', (Req req, Res res) async {
 });
 ```
 
-If you run command `lucy run` and open http://localhost:3000 in the browser, it'll shows an html page displaying `Hello Detective`
+If you run command `l run` and open http://localhost:3000 in the browser, it'll shows an html page displaying `Hello Detective`
 
 You can change the default `views` with other directory you want.
 
