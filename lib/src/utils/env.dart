@@ -6,6 +6,7 @@ dynamic env(String key) {
 
   if (value == null) {
     d.load();
+    value = d.env[key];
   }
 
   if (value != null) {
