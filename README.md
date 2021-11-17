@@ -1,6 +1,6 @@
 # Lucifer Lightbringer
 
-<img src="https://github.com/salkuadrat/lucifer/raw/master/lucifer.png" height="240" alt="Lucifer">
+<img src="https://github.com/salkuadrat/lucifer/raw/master/lucifer.png" height="200" alt="Lucifer">
 
 Lucifer is a fast, light-weight web framework in dart. 
 
