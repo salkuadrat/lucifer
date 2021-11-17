@@ -17,3 +17,7 @@
 ## 1.0.4 
 
 - Clearing things
+
+## 1.0.5
+
+- Update info about Lucy CLI
