@@ -2,31 +2,35 @@
 
 <img src="https://github.com/salkuadrat/lucifer/raw/master/lucifer.png" height="200" alt="Lucifer">
 
-Lucifer is a fast, light-weight web framework in dart. 
+Lucifer is a fast, lightweight web framework in dart.
 
-It's built on top of native `HttpServer` to provide a simple way to fulfill the needs of many modern web server these days. Lucifer is open, efficient, and provide lots of built-in features to handle many kinds of things.
+Built on top of native dart `HttpServer` to provide an elegant way to fulfill the needs of many modern web server these days.
+
+Lucifer is open, efficient, and provide lots of features to handle dozen kinds of things.
 
 ## Installation 
 
 [Install Dart SDK](https://dart.dev/get-dart)
 
-You can start create a new project using lucy command.
+You may start creating a new Lucifer project using lucy command.
 
-```shell
+```bash
 pub global activate lucy
 
 l create desire
 ```
 
-The first will activate lucifer command-line interface (CLI), named [Lucy](https://pub.dev/packages/lucy), to be accessible from your terminal. Then `l create desire` will create a new project in the `desire` directory. 
+The first command will activate command-line interface (CLI), named [Lucy](https://pub.dev/packages/lucy), to be accessible from your terminal. 
+
+Then `l create desire` will generate your new project in the `desire` directory. 
 
 Feel free to use any project name you want.
 
 ## Starting
 
-Now we are ready to build our web server. 
+Now we are ready to play with our web server.
 
-Open file `main.dart` in your project `lib` directory and see the structure of a simple lucifer application.
+You may open `main.dart` in your project `lib` directory to learn the structure of a simple lucifer application.
 
 ```dart
 import 'package:lucifer/lucifer.dart';
@@ -43,20 +47,21 @@ void main() {
 
   await app.listen(port);
   print('Server running at http://${app.host}:${app.port}');
+
   app.checkRoutes();
 }
 ```
 
-Test running it with command.
+You may test running it with the following command:
 
-```shell
+```bash
 cd desire
 l run
 ```
 
-Then open URL `http://localhost:3000` in your browser.
+Now you may open `http://localhost:3000` in the web browser. 
 
-If all went well, it will display `Hello Detective` and print this message in your terminal.
+If all went well, it will display `Hello Detective` and print the following message in your terminal.
 
 ```text
 Server running at http://localhost:3000
@@ -64,11 +69,11 @@ Server running at http://localhost:3000
 
 ## Fundamentals 
 
-We can learn the basics of Lucifer by understanding the `lib/main.dart` code above.
+You may learn the fundamentals of Lucifer by understanding the code inside the `lib/main.dart` of your new project.
 
-Those short lines of code do several things behind the scene.
+The short lines of code do several things behind the scene.
 
-First, we import `lucifer` and create a web application by assigning a new `App` object to `app`
+First, we import `lucifer` and create a web application by assigning a new `App` instance to `app`
 
 ```dart
 import 'package:lucifer/lucifer.dart';
@@ -78,15 +83,15 @@ import 'package:lucifer/lucifer.dart';
 final app = App();
 ```
 
-Then we set the server port to `3000` from `.env` file that's located in your root project directory.
+Then we set the server port with value `3000` from the `.env` file in your root project directory.
 
-Feel free to change it with any port number you want.
+You may change it with any port you want.
 
 ```dart
 final port = env('PORT') ?? 3000;
 ```
 
-Once we have the `app`, we tell it to listen to GET request on path `/` with `app.get()`
+Next we tell it to listen to a GET request on root path `/` with `app.get()`
 
 ```dart
 app.get('/', (Req req, Res res) async {
@@ -94,7 +99,7 @@ app.get('/', (Req req, Res res) async {
 });
 ```
 
-Every HTTP verbs has its own methods in Lucifer: `get()`, `post()`, `put()`, `delete()`, `patch()` with the first argument corresponds to the route path.
+Every HTTP verbs comes with its own method in Lucifer: `get()`, `post()`, `put()`, `patch()`, `delete()`, with the first argument corresponds to the route path.
 
 ```dart
 app.get('/', (Req req, Res res) {
@@ -109,18 +114,18 @@ app.put('/', (Req req, Res res) {
 
 });
 
-app.delete('/', (Req req, Res res) {
+app.patch('/', (Req req, Res res) {
 
 });
 
-app.patch('/', (Req req, Res res) {
+app.delete('/', (Req req, Res res) {
 
 });
 ```
 
-Next to it, we can see a callback function that will be called when an incoming request is processed, and send a response with it. 
+For the second argument, you may see a callback function that will be called when an incoming request is processed, and send a response with it.
 
-To handle the incoming request and send a response, we can write our code inside.
+To handle the incoming request and send a response, you may write your code inside the callback function.
 
 ```dart
 app.get('/', (Req req, Res res) async {
@@ -128,22 +133,26 @@ app.get('/', (Req req, Res res) async {
 });
 ```
 
-Lucifer provides two objects, `req` and `res`, that represents `Req` and `Res` instance.
+In the route callback function, Lucifer provides two objects, `req` and `res`, that represents `Req` and `Res` instance.
 
-`Req` is a request class built on top of native `HttpRequest`. It holds all information about the incoming request, such as request parameters, query string, headers, body, and much more.
+`Req` is a Request class built on top of native dart `HttpRequest`. 
 
-`Res` is a response class built on top of native `HttpResponse`. It's mostly used to manipulate response and sending it to the client.
+It holds all information about the incoming request, such as request parameters, query string, headers, body, and more.
 
-What we did before is sending a message string `Hello Detective` to the client using `res.send()`. This method sets the string in the response body, and then close the connection.
+`Res` is a Response class built on top of native dart `HttpResponse`. 
 
-The last line of our code starts the server and listen for incoming requests on the specified `port`
+It's mostly used to manipulate response and sending it to the client.
+
+What you did before is sending a message string `Hello Detective` to the client using `res.send()`. This method sets the string in the response body, and then close the connection.
+
+The last line of our code starts the server and listen for incoming requests on the specified `port`:
 
 ```dart
 await app.listen(port);
 print('Server running at http://${app.host}:${app.port}');
 ```
 
-Alternatively, we can also use `app.listen()` as follows.
+As an alternative, you may also use `app.listen()` like so:
 
 ```dart
 // listen to the specified port and host
@@ -162,40 +171,42 @@ await app.listen(port, 'localhost', () {
 
 ## Environment Variables
 
-Environment is some set of variables known to a process (such as, ENV, PORT, etc). It's recommended to mimic production environment during development by reading it from `.env` file.
+Environment is a set of variables known to a process (such as, ENV, PORT, etc). 
 
-When we run `l create`, a `.env` file is created in the root project directory, containing these values.
+It's highly recommended to mimic production environment during development by reading it from `.env` file.
+
+When we run `l create` command, a `.env` file is created in the root project directory, containing these values.
 
 ```text
 ENV = development
 PORT = 3000
 ```
 
-Then the value is accessed from the dart code using `env()` method.
+Then you may access the `.env` value from your dart code using `env()` method:
 
 ```dart
 void main() {
   final app = App();
   final port = env('PORT') ?? 3000; // get port from env
 
-  // get ENV to check if it's in a development or production stage
+  // get ENV value to check if it's a development or production stage
   final environment = env('ENV'); 
 
   ...
 }
 ```
 
-For maximum security, we should use environment variables for important things, such as database configurations and JSON Web Token (JWT) secret.
+For maximum security, we should always use environment variables for important things, such as database configurations and JSON Web Token (JWT) secret.
 
-One more thing... if you open `.gitignore` file in the root directory, you can see that `.env` is included there. 
+And one more thing... you may open `.gitignore` file in the root directory, and see that `.env` is included there. 
 
-It means our `.env` file will not be uploaded to remote repository like github, and the values inside will never be exposed to public eyes.
+It means your `.env` file will not be uploaded to remote repository like GitHub, and your environment variables values will never be exposed to the public eyes.
 
 ## Request Parameters 
 
-A simple reference to all the request object properties and how to use them.
+We've learned before that the `req` object holds the HTTP request informations. 
 
-We've learned before that the `req` object holds the HTTP request informations. There are some properties of `req` that you will likely access in your application.
+There are some properties of `req` that you will likely access in your application.
 
 <table>
   <tr>
@@ -246,19 +257,19 @@ We've learned before that the `req` object holds the HTTP request informations. 
 
 ## GET Query String
 
-Now we'll see how to retrieve the GET query parameters. 
+Now you may learn how to retrieve the GET query parameters. 
 
-Query string is the part that comes after URL path, and starts with a question mark `?` like `?username=lucifer`.
+Query string is the part that comes after URL path, and starts with a question mark `?` like `?username=lucifer`. 
 
-Multiple query parameters can be added with character `&`.
+Multiple query parameters can be added with character `&` like so:
 
 ```text
 ?username=lucifer&age=10000
 ```
 
-How can we get those values?
+How may we get the values?
 
-Lucifer provides a `req.query` object to make it easy to get those query values.
+Lucifer provides `req.query` object to make it easy to get all query values.
 
 ```dart
 app.get('/', (Req req, Res res) {
@@ -266,11 +277,9 @@ app.get('/', (Req req, Res res) {
 });
 ```
 
-This object contains map of each query parameter.
+The `req.query` object contains map of each query parameter. If there are no query, it will be an empty map or `{}`.
 
-If there are no query, it will be an empty map or `{}`.
-
-We can easily iterate on it with for loop. This will print each query key and its value.
+You may iterate on it with for loop. The following code will print each query key and its value:
 
 ```dart
 for (var key in req.query.keys) {
@@ -279,7 +288,7 @@ for (var key in req.query.keys) {
 }
 ```
 
-Or you can access the value directly with `req.q()`
+You may also access the individual value directly with `req.q()`
 
 ```dart
 req.q('username'); // same as req.query['username']
@@ -289,11 +298,11 @@ req.q('age'); // same as req.query['age']
 
 ## POST Request Data
 
-POST request data are sent by HTTP clients, such as from HTML form, or from a POST request using Postman or from JavaScript code.
+POST request data are sent by HTTP clients, such as from HTML form, or from a POST request sent using Postman or from an AJAX JavaScript code.
 
-How can we access these data?
+How may we access these data?
 
-If it's sent as json with `Content-Type: application/json`, we need to use `json()` middleware.
+If the request data is sent as json with `Content-Type: application/json`, you may use `json()` middleware.
 
 ```dart
 final app = App();
@@ -305,7 +314,7 @@ app.use(json());
 app.use(xssClean());
 ```
 
-If it's sent as urlencoded `Content-Type: application/x-www-form-urlencoded`, use `urlencoded()` middleware.
+If it's sent as urlencoded `Content-Type: application/x-www-form-urlencoded`, you may use `urlencoded()` middleware.
 
 ```dart
 final app = App();
@@ -317,7 +326,7 @@ app.use(urlencoded());
 app.use(xssClean());
 ```
 
-Now we can access the data from `req.body`
+It all went well, you may access the parsed request data from `req.body`:
 
 ```dart
 app.post('/login', (Req req, Res res) {
@@ -326,7 +335,7 @@ app.post('/login', (Req req, Res res) {
 });
 ```
 
-or simply use `req.data()`
+You may also use `req.data()` to access an individual request data directly:
 
 ```dart
 app.post('/login', (Req req, Res res) {
@@ -343,9 +352,9 @@ Besides `json()` and `urlencoded()`, there are other available built in body par
 - `urlencoded()` : to parse urlencoded request body
 - `multipart()` : to parse multipart request body
 
-To ensure the core framework stays lightweight, Lucifer will not assume anything about your request body. So you can choose and apply the appropriate parser as needed in your application.
+To ensure the core framework stays lightweight, Lucifer will not assume anything about the request body. You may choose and apply the appropriate parser as needed in your application.
 
-However, if you want to be safe and need to be able to handle all forms of request body, simply use the `bodyParser()` middleware. 
+However, if you want to be safe and need to be able to handle all forms of request body, you may simply use the all-inclusive `bodyParser()` middleware.
 
 ```dart
 final app = App();
@@ -353,11 +362,11 @@ final app = App();
 app.use(bodyParser());
 ```
 
-It will automatically detect the type of request body, and use the appropriate parser accordingly for each incoming request.
+The `bodyParser` middleware will automatically detect the type of request body, and use the appropriate parser accordingly for each of incoming request in your application.
 
 ## Send Response 
 
-In the example above, we've used `res.send()` to send a simple response to the client.
+In the example above, we have used `res.send()` to send a simple response to the client.
 
 ```dart
 app.get('/', (Req req, Res res) async {
@@ -369,11 +378,11 @@ If you pass a string, lucifer will set `Content-Type` header to `text/html`.
 
 If you pass a map or list object, it will set as `application/json`, and encode the data into JSON.
 
-`res.send()` sets the correct `Content-Length` response header automatically.
+`res.send()` will set the correct `Content-Length` response header automatically.
 
-`res.send()` also close the connection when it's all done.
+`res.send()` also will close the connection when it's all done.
 
-You can use `res.end()` method to send an empty response without any content in the response body.
+You may use `res.end()` method to send an empty response without any content in the response body.
 
 ```dart
 app.get('/', (Req req, Res res) async {
@@ -381,7 +390,7 @@ app.get('/', (Req req, Res res) async {
 });
 ```
 
-Another thing is you can send the data directly without `res.send()`
+Another thing is you may also send the data directly without `res.send()` like so:
 
 ```dart
 app.get('/string', (req, res) => 'string');
@@ -397,7 +406,7 @@ app.get('/list', (req, res) => ['Lucifer',  'Detective']);
 
 ## HTTP Status Response
 
-You can set HTTP status response using `res.status()` method.
+You may set the HTTP status response using `res.status()` method.
 
 ```dart
 res.status(404).end();
@@ -409,7 +418,7 @@ or
 res.status(404).send('Not Found');
 ```
 
-Or simply use `res.sendStatus()`
+Or you may simply use `res.sendStatus()` for a shortcut.
 
 ```dart
 // shortcut for res.status(200).send('OK');
@@ -427,9 +436,9 @@ res.sendStatus(500);
 
 ## JSON Response
 
-Besides `res.send()` method we've used before, we can use `res.json()` to send json data to the client. 
+Besides `res.send()` method, we may also use `res.json()` to send json data to the client. 
 
-It accepts a map or list object, and automatically encode it into json string with `jsonEncode()`
+The method accepts a map or list object, and automatically encode it into json string with `jsonEncode()`
 
 ```dart
 res.json({ 'name': 'Lucifer', 'age': 10000 });
@@ -441,13 +450,13 @@ res.json(['Lucifer', 'Detective', 'Amenadiel']);
 
 ## Cookies 
 
-Use `res.cookie()` to manage cookies in your application.
+You may use `res.cookie()` to manage cookies in your application.
 
 ```dart
 res.cookie('username', 'Lucifer');
 ```
 
-This method accepts additional parameters with various options.
+The method accepts additional parameters with various options.
 
 ```dart
 res.cookie(
@@ -468,7 +477,7 @@ res.cookie(
 );
 ```
 
-Here is some cookie parameters you can eat.
+Here is some cookie parameters you may eat.
 
 <table>
   <tr>
@@ -525,7 +534,7 @@ A cookie can be deleted with
 res.clearCookie('username');
 ```
 
-Or to clear all cookies.
+Or you may use the following code to clear all cookies.
 
 ```dart
 res.clearCookies();
@@ -533,7 +542,7 @@ res.clearCookies();
 
 ## Secure Cookies
 
-You can secure cookies in your application using `secureCookie()` middleware.
+You may secure cookies in your application using `secureCookie()` middleware.
 
 ```dart
 String cookieSecret = env('COOKIE_SECRET_KEY');
@@ -545,7 +554,7 @@ app.use(secureCookie(cookieSecret));
 
 ## HTTP Headers
 
-We can get HTTP header of a request from `req.headers`
+You may get the HTTP header of a request from `req.headers`
 
 ```dart
 app.get('/', (req, res) {
@@ -553,7 +562,7 @@ app.get('/', (req, res) {
 });
 ```
 
-Or we use `req.get()` to get an individual header value.
+You may also use `req.get()` or `req.header()` to get an individual header value.
 
 ```dart
 app.get('/', (req, res) {
@@ -565,7 +574,7 @@ app.get('/', (req, res) {
 });
 ```
 
-To change HTTP header of a response to the client, we can use `res.set()` and `res.header()`
+To change the HTTP header of a response to client, you may use use `res.set()` and `res.header()`
 
 ```dart
 res.set('Content-Type', 'text/html');
@@ -575,7 +584,7 @@ res.set('Content-Type', 'text/html');
 res.header('Content-Type', 'text/html');
 ```
 
-There are other ways to handle the Content-Type header.
+Here are some other ways to modify the Content-Type header of a response to the clinet.
 
 ```dart
 res.type('.html'); // res.set('Content-Type', 'text/html');
@@ -591,7 +600,9 @@ res.type('png'); // res.set('Content-Type', 'image/png');
 
 ## Redirects
 
-Using redirects are common thing to do in a web application. You can redirect a response in your application with `res.redirect()` or `res.to()`
+Using redirects are common thing to do in a web application. 
+
+You may redirect a response in your application with `res.redirect()` or `res.to()`
 
 ```dart
 res.redirect('/get-over-here');
@@ -601,9 +612,9 @@ res.redirect('/get-over-here');
 res.to('/get-over-here');
 ```
 
-This will create redirect with a default 302 status code.
+It will create redirect with the default 302 status code.
 
-We can also use it this way.
+You may also use it this way to set a custom status code.
 
 ```dart
 res.redirect(301, '/get-over-here');
@@ -613,7 +624,7 @@ res.redirect(301, '/get-over-here');
 res.to(301, '/get-over-here');
 ```
 
-You can pass the path with an absolute path (`/get-over-here`), an absolute URL (`https://scorpio.com/get-over-here`), a relative path (`get-over-here`), or `..` to go back one level.
+You may pass the path to `res.redirect()` with an absolute path (`/get-over-here`), an absolute URL (`https://scorpio.com/get-over-here`), a relative path (`get-over-here`), or `..` to go back one level.
 
 ```dart
 res.redirect('../get-over-here');
@@ -621,7 +632,7 @@ res.redirect('../get-over-here');
 res.redirect('..');
 ```
 
-Or simply use `res.back()` to redirect back to the previous url based on the HTTP Referer value sent by client in the request header (defaults to / if not set).
+Or you may simply use `res.back()` to redirect back to the previous url, based on the HTTP Referer value sent by client in the request header (defaults to / if it's not set).
 
 ```dart
 res.back();
@@ -631,7 +642,7 @@ res.back();
 
 Routing is the process of determining what should happen when a URL is called, and which parts of the application needs to handle the request.
 
-In the example before we've used.
+In the example before we have used routing like so:
 
 ```dart
 app.get('/', (req, res) async {
@@ -639,13 +650,15 @@ app.get('/', (req, res) async {
 });
 ```
 
-This creates a route that maps root path `/` with HTTP GET method to the response we provide inside the callback function.
+The code above creates a route that maps a root path `/` with HTTP GET method to the response we provide inside the callback function.
 
-We can use named parameters to listen for custom request. 
+We may use named parameters to listen for custom request. 
 
-Say we want to provide a profile API that accepts a string as username, and return the user details. We want the string parameter to be part of the URL (not as query string). 
+Say we want to provide a profile API that accepts a string as username, and return the user details. 
 
-So we use named parameters like this.
+However, we want the string parameter to be part of the URL, not as a query string. 
+
+So we use the named parameters like so:
 
 ```dart
 app.get('/profile/:username', (Req req, Res res) {
@@ -656,9 +669,9 @@ app.get('/profile/:username', (Req req, Res res) {
 });
 ```
 
-You can use multiple parameters in the same URL, and it will automatically added to `req.params` values.
+You may use multiple parameters in the same URL, then it will be included automatically to the `req.params` values.
 
-As an alternative, you can use `req.param()` to access an individual value of `req.params`
+You may also use `req.param()` to access an individual value of `req.params`
 
 ```dart
 app.get('/profile/:username', (Req req, Res res) {
@@ -684,7 +697,7 @@ The regex route above will match every requests that contains string `post`, suc
 
 ## Advanced Routing
 
-We can use `Router` object from `app.router()` to build an organized routing.
+We may use `Router` object from `app.router()` to build an organized routing.
 
 ```dart
 final app = App();
@@ -697,9 +710,9 @@ router.get('/login', (req, res) async {
 app.use('/auth', router);
 ```
 
-Now the login page will be available at http://localhost:3000/auth/login.
+You may run the code above, and the login page will be available at http://localhost:3000/auth/login.
 
-You can register more than one routers in your app.
+You may register as many routers as you need.
 
 ```dart
 final app = App();
@@ -753,7 +766,9 @@ app.use('/auth', auth);
 app.use('/user', user);
 ```
 
-Using `app.router()` is a good practice to organize your endpoints. You can split them into independent files to maintain a clean, structured and easy-to-read code.
+Using `app.router()` is a good practice to organize your endpoints. 
+
+You may split them into some independent files to maintain a clean, structured and easy-to-read code.
 
 Another way to organize your app is using `app.route()`
 
@@ -782,9 +797,11 @@ app.route('/user')
   });
 ```
 
-With this `app.route()` you can also use `Controller`. This is especially useful when you're building a REST API.
+Another way to use `app.route()` is by utilizing class `Controller`. 
 
-Lets create a new controller in the `controller` directory.
+This is useful especially when you are building a REST API.
+
+You may create a new controller in the `/lib/controller` directory.
 
 ```dart
 class UserController extends Controller {
@@ -822,7 +839,7 @@ class UserController extends Controller {
 }
 ```
 
-Then use it in your main app like this.
+Then use it in your main app like so.
 
 ```dart
 final app = App();
@@ -842,9 +859,9 @@ app.route('/user')
   .delete('/:id', user.delete);
 ```
 
-It's good practice to split your routes into its own independent controllers.
+It's a good practice to split your routes into its own independent controllers.
 
-Also, feel free to add more methods to your `Controller`
+You may also add more methods to your `Controller`
 
 ```dart
 class UserController extends Controller {
@@ -857,7 +874,7 @@ class UserController extends Controller {
 }
 ```
 
-Then apply the method by chaining `app.route()`
+And apply the method by chaining `app.route()`
 
 ```dart
 final app = App();
@@ -868,15 +885,15 @@ final user = UserController(app);
 app.route('/user', user).get('/vip', user.vip);
 ```
 
-To help you with adding `Controller` to your project, Lucifer provides another command like this.
+To help you with adding `Controller` to your project, Lucifer provides another command.
 
 ```shell
 $ l c post
 ```
 
-These command will create a `post_controller.dart` file in the `/bin/controller` directory, and automatically fill it with a boilerplate `PostController` class.
+The command above will create file `post_controller.dart` in the `/lib/controller` directory, and fill it with a boilerplate `PostController` class.
 
-You can use it to create more than one `Controller` like this.
+You may also use the command to create multiple `Controller`.
 
 ```shell
 $ l c post news user customer
@@ -884,9 +901,9 @@ $ l c post news user customer
 
 ## Static Files
 
-It's common to have images, css, and javascripts in a public folder, and expose them.
+It's common to have images, css, and javascripts in a public folder.
 
-You can do it by using `static()` middleware.
+You may expose them by using `static()` middleware.
 
 ```dart
 final app = App();
@@ -898,9 +915,11 @@ Now if you have `index.html` file in the `public` directory, it will be served a
 
 ## Sending Files
 
-Lucifer provides a simple way to send file as an attachment to the client with `res.download()`
+Lucifer provides a simple way to send file to the client with `res.download()` or `res.sendFile()`.
 
-When user hit a route that sends file with this method, browsers will prompt the user for download. Instead of showing it in a browser, it will be saved into local disk.
+When user hit a route that sends file with `res.download()`, browsers will prompt the user for download. 
+
+Instead of showing it in the browser, the file will be saved to the local drive.
 
 ```dart
 app.get('/downloadfile', (Req req, Res res) async {
@@ -912,7 +931,7 @@ app.get('/downloadfile', (Req req, Res res) async {
 });
 ```
 
-You can send a file with a custom filename.
+You may send file with a custom filename.
 
 ```dart
 app.get('/downloadfile', (Req req, Res res) async {
@@ -920,7 +939,7 @@ app.get('/downloadfile', (Req req, Res res) async {
 });
 ```
 
-And to handle the error when sending file, use this.
+And use the following to handle error during the process of sending file.
 
 ```dart
 app.get('/downloadfile', (Req req, Res res) async {
@@ -934,7 +953,7 @@ app.get('/downloadfile', (Req req, Res res) async {
 
 ## CORS 
 
-A client app running in the browser usually can access only the resources from the same domain (origin) as the server.
+A client app running in the browser usually can only access resources from the same domain (origin) as the server.
 
 Loading images or scripts/styles usually works, but XHR and Fetch calls to another server will fail, unless the server implements a way to allow that connection.
 
@@ -942,7 +961,7 @@ That way is CORS (Cross-Origin Resource Sharing).
 
 Loading web fonts using `@font-face` also has same-origin-policy by default, and also other less popular things (like WebGL textures).
 
-If you don't set up a CORS policy that allows 3rd party origins, their requests will fail.
+If we don't set up a CORS policy that allows 3rd party origins, the requests will fail.
 
 A cross origin request fail if it's sent
 
@@ -951,13 +970,13 @@ A cross origin request fail if it's sent
 - to a different port
 - to a different protocol
 
-and it's there for your own security, to prevent any malicious users from exploiting your resources.
+CORS exists for your own security... to prevent any malicious users from exploiting your resources.
 
-But if you control both the server and the client, you have good reasons to allow them to talk with each other.
+But if you control both the server and client, it's assumed to be safe to allow them to talk with each other.
 
-Use `cors` middleware to set up the CORS policy.
+You may use `cors` middleware to set up the CORS policy.
 
-As example, lets say you have a simple route without cors.
+As an example, lets say you have a simple route without cors.
 
 ```dart
 final app = App();
@@ -967,7 +986,7 @@ app.get('/no-cors', (Req req, Res res) async {
 });
 ```
 
-If you hit `/no-cors` using fetch request from a different origin, it will raise a CORS issue.
+When you hit `/no-cors` using fetch request from a different origin, it will raise a CORS issue.
 
 All you need to make it work is using the built in `cors` middleware and pass it to the request handler.
 
@@ -979,7 +998,7 @@ app.get('/yes-cors', cors(), (Req req, Res res) async {
 });
 ```
 
-You can apply `cors` for all incoming requests by using `app.use()`
+You may apply `cors` for all incoming requests by using `app.use()`
 
 ```dart
 final app = App();
@@ -991,7 +1010,7 @@ app.get('/', (Req req, Res res) async {
 });
 ```
 
-By default, cors will set cross-origin header to accept any incoming requests. You can change it to only allow one origin and block all the others.
+By default, cors will set cross-origin header to accept any incoming requests. You may change it to only allow one origin and block all the others.
 
 ```dart
 final app = App();
@@ -1005,7 +1024,7 @@ app.get('/', (Req req, Res res) async {
 });
 ```
 
-You can also set it up to allow multiple origins.
+You may also set cors to allow multiple origins.
 
 ```dart
 final app = App();
@@ -1024,17 +1043,19 @@ app.get('/', (Req req, Res res) async {
 
 ## Session
 
-We need to use sessions to identify client across many requests.
+We need to use sessions to identify client across the incoming requests.
 
-By default, web requests are stateless, sequential and two requests can't be linked to each other. There is no way to know if a request comes from a client that has already performed another request before.
+By default, HTTP requests are stateless, sequential and two requests can't be linked to each other. 
+
+There is no way to know if a request comes from a client that has already performed another request.
 
 Users can't be identified unless we use some kind of magic that makes it possible.
 
 This is what sessions are (JSON Web Token is another).
 
-When handled correctly, each user of your application or your API will be assigned to a unique session ID, and it allows you to store the user state.
+When handled correctly, each user of your application will be assigned to a unique session ID, and it allows you to store the user state.
 
-We can use built in `session` middleware in lucifer.
+You may use the built-in `session` middleware.
 
 ```dart
 final app = App();
@@ -1042,11 +1063,15 @@ final app = App();
 app.use(session(secret: 'super-s3cr3t-key'));
 ```
 
-And now all requests in your app will use session.
+And now all requests in your application will use session.
 
-`secret` is the only required parameter, but there are many more you can use. `secret` should use a random string, unique to your application. Or use a generated string from [randomkeygen](https://randomkeygen.com/).
+`secret` is the only required parameter, but there are many more you can use.
 
-This session is now active and attached to the request. And you can access it from `req.session()`
+`secret` should use a random string, unique to your application (or generate it from [randomkeygen](https://randomkeygen.com/)).
+
+This session is now active and attached to the request. 
+
+You may access it using `req.session()`
 
 ```dart
 app.get('/', (Req req, Res res) {
@@ -1054,13 +1079,13 @@ app.get('/', (Req req, Res res) {
 });
 ```
 
-To get a specific value from the session, you can use `req.session(name)`
+To get a specific value from the session, you may use `req.session(name)`
 
 ```dart
 final username = req.session('username');
 ```
 
-Or use `req.session(name, value)` to add (or replace) value in the session.
+You may use `req.session(name, value)` to add (or replace) value in the session.
 
 ```dart
 final username = 'lucifer';
@@ -1068,13 +1093,11 @@ final username = 'lucifer';
 req.session('username', username);
 ```
 
-Sessions can be used to to communicate data between middlewares, or to retrieve it later on the next request.
+Sessions can be used to communicate data between middlewares, or retrieve it later in the next request.
 
-Where do we store this session?
+Where do we store this session? Well, it depends on the set up that we use for our sessions.
 
-Well, it depends on the set up that we use for our sessions.
-
-It can be stored in
+It can be stored in:
 
 - memory: this is the default, but don't use it in production
 - database: like Postgres, SQLite, MySQL or MongoDB
@@ -1082,25 +1105,33 @@ It can be stored in
 
 All the session store above will only set session ID in a cookie, and keep the real data server-side. 
 
-Clients will receive this session id, and send it back with each of their next HTTP requests. Then the server can use it to get the store data associated with these session.
+Clients will receive this session id, and send it back in each of their next requests. 
 
-Memory is the default setting for session, it's pretty simple and requires zero setup on your part. However, it's not recommended for production.
+Then the server can use it to get the data associated with these session.
 
-The most efficient is using memory cache like Redis, but it needs some more efforts on your part to set up the infrastructure.
+Memory is the default setting for session. It's simple and needs zero setup on your part. 
+
+However, it's not recommended for production. 
+
+The most efficient is using memory cache like Redis, but it needs some efforts on your part to set up the infrastructure.
 
 ## JSON Web Token
 
 JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. 
 
-This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
+This information can be verified and trusted because it is digitally signed. 
 
-You can use JWT feature in Lucifer by using an instance of `Jwt`  to sign and verify token. Remember to put the jwt secret in environment variables.
+JWTs can be signed using a secret (with the HMAC algorithm) or a public/private key pair using RSA or ECDSA.
+
+You may utilize JWT in your Lucifer application by using an instance of `Jwt`  to sign and verify token.
 
 ```dart
 final app = App();
 final port = env('PORT') ?? 3000;
 
 final jwt = Jwt();
+
+// Don't forget to put your jwt secret in environment variables
 final secret = env('JWT_SECRET');
 
 app.get('/login', (Req req, Res res) {
@@ -1127,7 +1158,7 @@ app.get('/login', (Req req, Res res) {
 });
 ```
 
-Use `jwt.verify()` to verify the token.
+You may use `jwt.verify()` to verify the token.
 
 ```dart
 final app = App();
@@ -1189,11 +1220,11 @@ app.get('/', (Req req, Res res) {
 
 ## Middleware
 
-Middleware is function that hooks into the routing process. It performs some operations before executing the route callback handler.
+Middleware is a function that hooks into the routing process. It performs some operations before executing the route callback handler.
 
-Middleware is usually to edit the request or response object, or terminate the request before it reach the route callback.
+Middleware is usually used to modify the req or res object, or to terminate the request before it reaches route callback.
 
-You can add middleware like this.
+You may add middleware in your Lucifer application like so:
 
 ```dart
 app.use((Req req, Res res) async {
@@ -1201,11 +1232,11 @@ app.use((Req req, Res res) async {
 });
 ```
 
-This is a bit similar as defining the route callback.
+The code looks similar with the route callback.
 
-Most of the time, you'll be enough by using built in middlewares provided by Lucifer, like the `static`, `cors`, `session` that we've used before. 
+Most of the time, you will be enough with using the built-in Lucifer middlewares, like `static`, `cors`, or `session`.
 
-But if you need it, you can easily create your own middleware, and use it for a specific route by putting it in the middle between route and callback handler.
+However, you may create a custom middleware, and then use it for a specific route by putting it in the middle of route and callback.
 
 ```dart
 final app = App();
@@ -1221,7 +1252,7 @@ app.get('/', custom, (Req req, Res res) async {
 });
 ```
 
-You can apply multiple middlewares to any route you want.
+You may apply multiple middlewares to the route you want.
 
 ```dart
 final app = App();
@@ -1239,7 +1270,7 @@ app.get('/user', [ verifyToken, authorize ], (req, res) async {
 });
 ```
 
-If you want to save data in a middleware and access it from the next middlewares or from the route callback, use `res.local()` 
+If you need to pass data from a middleware to be accessible at the next middlewares or the route callback, you may use `res.local()`
 
 ```dart
 final app = App();
@@ -1260,17 +1291,15 @@ app.get('/user', [ verifyToken, authorize ], (req, res) async {
 });
 ```
 
-There is no `next()` to call in these middleware (unlike other framework like Express). 
+There is no `next()` to call in these middleware (unlike other web frameworks). 
 
-Processing next is handled automatically by lucifer. 
+Processing next is automatically handled by lucifer.
 
-A lucifer app will always run to the next middleware or callback in the current processing stack... 
+Lucifer will always run to the next middleware or callback in the current stack... Unless, you send some response to the client in the middleware, which will close the connection and stop all executions of the next middlewares/callback.
 
-Unless, you send some response to the client in the middleware, which will close the connection and automatically stop all executions of the next middlewares/callback.
+Since the call is automatic, it's important to always remember to use proper  `async` `await` when you're dealing with asynchronous functions.
 
-Since these call is automatic, you need to remember to use a proper  `async` `await` when calling asynchronous functions.
-
-As example, when using `res.download()` to send file to the client.
+As an example, remember to use `async` `await` when using `res.download()` to send a file to the client:
 
 ```dart
 app.get('/download', (Req req, Res res) async {
@@ -1278,15 +1307,27 @@ app.get('/download', (Req req, Res res) async {
 });
 ```
 
-One simple rule to follow: if you call a function that returns `Future` or `FutureOr`, play safe and use `async` `await`.
+Here is a simple rule to follow... if calling a function that returns `Future` or `FutureOr`, you may be better to play safe and use `async` `await`
 
-If in the middle of testing your application, you see an error in the console with some message like `HTTP headers not mutable` or `headers already sent`, it's an indicator that some parts of your application need to use proper `async await`
+If in the middle of debugging your application, you see error in the terminal with messages like `HTTP headers not mutable` or `headers already sent`, it's a clear indicator that some parts in the application need to use proper `async await`.
+
+To help you with adding custom middleware to your project, Lucifer provides another command like so:
+
+```shell
+$ l m custom
+```
+
+The command above will create file `custom.dart` in the `/lib/middleware` directory, and fill it with a boilerplate `custom` middleware function.
+
+You may also use the command to generate multiple middlewares.
+
+```shell
+$ l m custom log auth
+```
 
 ## Forms
 
-Now lets learn to process forms with Lucifer.
-
-Say we have an HTML form:
+Say we have an HTML form like so:
 
 ```html
 <form method="POST" action="/login">
@@ -1296,13 +1337,13 @@ Say we have an HTML form:
 </form>
 ```
 
-When user press the submit button, browser will automatically make a POST request to `/login` in the same origin of the page, and with it sending some data to the server, encoded as `application/x-www-form-urlencoded`. 
+When user press the submit button, browser will automatically make a POST request to `/login`, and with it, sending some data to the server encoded as `application/x-www-form-urlencoded`. 
 
-In this case, the data contains `username` and `password` 
+In this case, the POST data contains `username` and `password`.
 
-Form also can send data with GET, but mostly it will use the standard  & safe POST method.
+Form may also send data with GET method, but mostly it will use the standard POST.
 
-These data will be attached in the request body. To extract it, you can use the built in `urlencoded` middleware.
+The data will be attached in the request body. To extract it, you may use the built in `urlencoded` middleware.
 
 ```dart
 final app = App();
@@ -1312,7 +1353,7 @@ app.use(urlencoded());
 app.use(xssClean());
 ```
 
-We can test create a POST endpoint for `/login`, and the submitted data will be available from `req.body`
+You may test creating a POST endpoint for `/login`, and the submitted data will be available at `req.body`. 
 
 ```dart
 app.post('/login', (Req req, Res res) async {
@@ -1320,18 +1361,27 @@ app.post('/login', (Req req, Res res) async {
   final password = req.body['password']; // same as req.data('password');
 
   ...
+});
+```
 
-  await res.end();
+You may also use `req.data()` to access an individual value of the form data.
+
+```dart
+app.post('/login', (Req req, Res res) async {
+  final username = req.data('username');
+  final password = req.data('password');
+
+  ...
 });
 ```
 
 <!---
 
-Now lets see how to validate and sanitize these data by using `check` middleware.
+Now you may learn how to validate and sanitize the form data using `check` middleware.
 
 ## Input Validation
 
-Say we have a POST endpoint that accepts name, email and age.
+Say you have a POST endpoint that accepts name, email and age.
 
 ```dart
 final app = App();
@@ -1356,7 +1406,7 @@ How to validate those results (server-side) to make sure:
 - email is a valid email?
 - age is a number between 0 and 150?
 
-The easy way to do this is using the `check` middleware.
+The easy way to do this is using `check` middleware.
 
 ```dart
 final app = App();
@@ -1406,7 +1456,7 @@ Beside those three `isLength`, `isEmail` and `isNumeric`, there are other method
 - `isIn()`: check if the data is in array of specified values
 - `isFQDN()`: is a fully qualified domain name
 
-You can also validate the input with regular expression by using `matches()`.
+You may also validate the input with regular expression by using `matches()`.
 
 Dates can be checked with 
 
@@ -1467,15 +1517,15 @@ app.post('/user', validation, (Req req, Res res) async {
 
 ## Input Sanitization
 
-One sensible rule to follow when you run a public server: never trust any input from any user.
+One sensible rule to follow when you run a public server is... never trust any input from any user.
 
-Even if you have sanitized and make sure people can't enter weird things from client side, you would still be open to people with tools (such as Chrome devtools or Postman) send a POST request directly to your server.
+Even if you have sanitized and make sure people can't enter weird things in the client side, you would still be open to people with tools (such as Chrome devtools or Postman) to send a POST request directly to your server.
 
 Or some bots trying some clever ways to find a hole in your ship.
 
-The thing we should do is sanitize these inputs.
+The thing we should do is sanitize the inputs.
 
-We can use `check` middleware like before to perform this sanitization.
+You may use the same `check` middleware to perform this sanitization.
 
 Say you already have a POST endpoint with complete validation.
 
@@ -1496,7 +1546,7 @@ app.post('/user', validations, (Req req, Res res) async {
 });
 ```
 
-Now you can piping some sanitize methods after the validation.
+Now you may piping some sanitization methods after the validation.
 
 ```dart
 final validations = [
@@ -1537,7 +1587,7 @@ And to force conversion to some formats.
 - `toDouble()`: convert the input string to a double, or null if the input is not a double
 - `toInt()`: convert the input string to an integer, or null if the input is not an integer
 
-Like validators, you can also create a custom sanitizer.
+Like validators, you may also create a custom sanitizer.
 
 ```dart
 final custom = (value) {
@@ -1557,8 +1607,6 @@ app.post('/user', validation, (Req req, Res res) async {
 
 ## File Uploads
 
-Learn to handle uploading file(s) via forms.
-
 Lets say you have an HTML form that allows user to upload file.
 
 ```html
@@ -1568,11 +1616,11 @@ Lets say you have an HTML form that allows user to upload file.
 </form>
 ```
 
-When user press the submit button, browser will automatically send a POST request to `/upload` in the same origin, and sending file from the input file. 
+When press the submit button, browser will automatically send a POST request to the route `/upload`, and sending file from the input file.
 
-It's not sent as `application/x-www-form-urlencoded` like the usual standard form, but `multipart/form-data`
+It won't be sent as `application/x-www-form-urlencoded` like the standard form, but as `multipart/form-data`.
 
-Handling multipart data manually can be tricky and error prone, so we will use a built in `FormParser` utility that you can access with `app.form()`
+Handling multipart data can be tricky and error prone, so you may use the built-in `FormParser` object that you can access with `app.form()`
 
 ```dart
 final app = App();
@@ -1590,7 +1638,7 @@ app.post('/upload', (Req req, Res res) async {
 });
 ```
 
-You can use it per event that will be notified when each file is processed. This also notify other events, like on processing end, on receiving other non-file field, or when an error happened.
+You may use it per event that will be notified whenever each file is processed. This will also notify other events, such as when processing end, when receiving other non-file field, or when an error happened.
 
 ```dart
 final app = App();
@@ -1614,7 +1662,7 @@ app.post('/upload', (Req req, Res res) async {
 });
 ```
 
-Or use it like this.
+You may also use it like this:
 
 ```dart
 final app = App();
@@ -1638,14 +1686,18 @@ app.post('/upload', (Req req, Res res) async {
 });
 ```
 
-Either way, you get one or more `UploadedFile` objects, which will give you information about the uploaded files. These are some value you can use.
+Either way, you will get one or more `UploadedFile` objects, containing information about the uploaded files. 
+
+Here are the value you may use.
 
 - `file.name`: to get the name from input file
 - `file.filename`: to get the filename 
 - `file.type`: to get the MIME type of the file
 - `file.data`: to get raw byte data of the uploaded file
 
-By default, `FormParser` only include the raw bytes data and not save it into any temporary folder. You can easily handle this yourself like this.
+By default, `FormParser` will only contains raw bytes data of the file and not save it into any folder.
+
+You may handle it yourself like so:
 
 ```dart
 import 'package:path/path.dart' as path;
@@ -1675,9 +1727,13 @@ print('File is saved at ${f.path}');
 
 ## Templating
 
-Lucifer provides default templating with `Mustache` engine. It uses a package [`mustache_template`](https://pub.dev/packages/mustache_template) that's implemented from the [official mustache spec](https://mustache.github.io/).
+Lucifer provides a default templating by utilizing the `Mustache` engine. 
 
-By default, to keep the core framework light-weight, lucifer doesn't attach any template engine to your app. To use the `mustache` middleware, you need to apply it first.
+It uses a [`mustache_template`](https://pub.dev/packages/mustache_template) package which is implemented from the [official mustache spec](https://mustache.github.io/).
+
+As usual, to keep the core framework stays lightweight, lucifer doesn't attach any template engine to your default application. 
+
+To use the `mustache` templating engine, you may apply it first like so:
 
 ```dart
 final app = App();
@@ -1685,9 +1741,9 @@ final app = App();
 app.use(mustache());
 ```
 
-Then these `mustache` can render any template you have in the project `views` directory.
+Then you may use the `mustache` to render any template you have in the project `views` directory.
 
-Say you have this `index.html` in the `views` directory.
+Let say you have `index.html` in the `views` directory.
 
 ```html
 <!DOCTYPE html>
@@ -1699,7 +1755,7 @@ Say you have this `index.html` in the `views` directory.
 </html>
 ```
 
-And render the template with `res.render()`
+You may render the template using `res.render()` or `res.view()`:
 
 ```dart
 final app = App();
@@ -1711,23 +1767,22 @@ app.get('/', (Req req, Res res) async {
 });
 ```
 
-If you run command `l run` and open http://localhost:3000 in the browser, it'll shows an html page displaying `Hello Detective`
+Now, you may run `l run` command, open http://localhost:3000, and you will see a rendered html page displaying `Hello Detective`.
 
-You can change the default `views` with other directory you want.
+You may change the default `views` directory with any directory you want.
 
 ```dart
 final app = App();
 
-// now use 'template' as the views directory
+// use 'template' as the views directory
 app.use(mustache('template'));
 
 app.get('/', (Req req, Res res) async {
-  // can also use res.view()
   await res.view('index', { 'title': 'Hello Detective' });
 });
 ```
 
-Now if you add this `index.html` file to the `template` directory.
+You may add `index.html` to the `template` directory.
 
 ```html
 <!DOCTYPE html>
@@ -1739,11 +1794,11 @@ Now if you add this `index.html` file to the `template` directory.
 </html>
 ```
 
-Then run the app and open it in the browser, it will shows another html page containing `Hello Detective from template`
+Then you may run it, open in the browser, and you will see another html page containing `Hello Detective from template`.
 
-For more complete details to use `Mustache` template engine, you can read the [mustache manual](https://mustache.github.io/mustache.5.html).
+For more details on how to use `Mustache` engine, you may refer to the [mustache manual](https://mustache.github.io/mustache.5.html).
 
-To use other engines, such as [jinja](https://pub.dev/packages/jinja) or [jaded](https://pub.dev/packages/jaded), you can manage the template rendering yourself, and then send the html by calling `res.send()`
+If you want to use other templating engines, such as [jinja](https://pub.dev/packages/jinja) or [jaded](https://pub.dev/packages/jaded), you may do it by handling the template rendering yourself and send the rendered html using `res.send()`
 
 ```dart
 app.get('/', (Req req, Res res) async {
@@ -1753,9 +1808,9 @@ app.get('/', (Req req, Res res) async {
 });
 ```
 
-Or you can create a custom middleware to handle templating with your chosen engine.
+You may also doing it by creating a custom middleware to handle templating with your chosen engine.
 
-Here is example you can learn from the `mustache` middleware to create your own custom templating.
+You may learn from the example code of the `mustache` middleware to create your own custom templating.
 
 ```dart
 // 
@@ -1779,13 +1834,13 @@ Callback customTemplating([String? views]) {
       // 
       if (await file.exists()) {
         // 
-        // mostly, all you need to do is edit these two lines 
+        // mostly, all you need to do is edit the following two lines 
         // 
         Template template = Template(await file.readAsString());
         String html = template.renderString(data);
 
         // 
-        // in the end, always send the rendered html
+        // for the final act, send the rendered html to the client
         //
         await res.send(html);
       }
@@ -1794,7 +1849,7 @@ Callback customTemplating([String? views]) {
 }
 ```
 
-To apply the new templating middleware, use `app.use()` like before.
+To apply the new templating middleware, you may use `app.use()`
 
 ```dart
 final app = App();
@@ -1804,7 +1859,9 @@ app.use(customTemplating());
 
 ## Security
 
-Lucifer has a built in `security` middleware that covers dozens of standard security protections to guard your application. To use them, simply add it to your app with `app.use()`
+Lucifer has a built-in `security` middleware that covers a complete standard security protections for guarding your application. 
+
+To use them, you may simply apply it using `app.use()`
 
 ```dart
 final app = App();
@@ -1812,11 +1869,13 @@ final app = App();
 app.use(security());
 ```
 
-[Read here](https://infosec.mozilla.org/guidelines/web_security.html) to learn more about web security.
+[Read here](https://infosec.mozilla.org/guidelines/web_security.html) to learn more about the intricacies of web security.
 
 ## Error Handling
 
-Lucifer automatically handle the errors that occured in your application. However, you can set your own error handling with `app.on()`
+Lucifer will automatically handle the errors that occured in your application. 
+
+However, you may set your own error handling using `app.on()`
 
 ```dart
 final app = App();
@@ -1841,7 +1900,7 @@ app.on(StatusCode.NOT_IMPLEMENTED, (req, res) { });
 app.on(StatusCode.SERVICE_UNAVAILABLE, (req, res) { });
 ```
 
-You can trigger HTTP exceptions from middleware or callback function.
+You may also trigger HTTP exceptions in the middleware or callback function.
 
 ```dart
 app.get('/unauthorized', (Req req, Res res) async {
@@ -1849,28 +1908,39 @@ app.get('/unauthorized', (Req req, Res res) async {
 });
 ```
 
-Here is the list of all default exceptions we can use.
+Here is a complete list of all the HTTP exceptions that you can use in your application.
 
 ```dart
 BadRequestException
+
 UnauthorizedException
+
 PaymentRequiredException
+
 ForbiddenException
+
 NotFoundException
+
 MethodNotAllowedException
+
 RequestTimeoutException
+
 ConflictException
+
 UnprocessableException
+
 InternalErrorException
+
 NotImplementedException
+
 ServiceUnavailableException
 ```
 
 ## Parallel Processing
 
-Parallel and multithread-ing is supported by default with Dart/Lucifer. It can be done by distributing the processes evenly in various isolates.
+Parallel and multithread-ing is supported by default in Lucifer/Dart. 
 
-Here is one way to do it.
+You may do it by distributing the application processes evenly in various isolates.
 
 ```dart
 import 'dart:async';
@@ -1909,7 +1979,9 @@ Future<App> startApp() async {
 
 ## Web Socket
 
-Web socket is a necessary part of web application if you need persistent communications between client and server. Here is an example to use web socket with Lucifer.
+Web socket is a necessary part of web application to initiate persistent communications between client and server. 
+
+You may utilize web socket in your Lucifer application like so:
 
 ```dart
 import 'dart:io';
@@ -2045,7 +2117,9 @@ This part will includes a simple tutorial to create a fully functioning GraphQL 
 
 ## Contributions
 
-Feel free to contribute to the project in any ways. This includes code reviews, pull requests, documentations, tutorials, or reporting bugs that you found in Lucifer.
+Feel free to contribute to the project in any ways. 
+
+This includes code reviews, pull requests, documentations, tutorials, or reporting bugs that you might found in Lucifer.
 
 ## License 
 

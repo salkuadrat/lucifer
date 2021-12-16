@@ -25,3 +25,9 @@
 ## 1.0.6 
 
 - Update Lucy CLI with L command
+
+## 1.0.7
+
+- Update Documentation 
+- Update Lucy CLI `l m` command to generate a custom middleware
+- Upgrade `cryptography` package dependency

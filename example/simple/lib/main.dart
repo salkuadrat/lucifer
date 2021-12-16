@@ -12,18 +12,21 @@ void main() async {
 
   // app.use(secureCookie('super-s3cr3t-key'));
   app.use(session(secret: 'super-s3cr3t-key'));
-  app.use(mustache('template'));
+  app.use(mustache());
   app.use(xssClean());
 
   // testJwt();
 
   final auth = app.router();
+
   auth.get('/login', (req, res) {
     res.send('Login');
   });
 
   app.get('/', (Req req, Res res) async {
-    await res.render('index', {'title': 'Hello Detective'});
+    await res.render('index', {
+      'title': 'Hello Detective',
+    });
   });
 
   app.get('/string', (req, res) => 'string');
@@ -52,6 +55,7 @@ void main() async {
   app.use('/auth', auth);
 
   final user = UserController(app);
+
   app.route('/user', user).get('/vip', user.vip);
 
   /* app.route('/user')
@@ -63,11 +67,9 @@ void main() async {
     .delete('/:id', user.delete); */
 
   await app.listen(port);
+
   print('Server running at http://${app.host}:${app.port}');
   app.checkRoutes();
-
-  Future.delayed(Duration(seconds: 20));
-  await app.restart();
 }
 
 void testJwt() {

@@ -1,6 +1,6 @@
 name: lucifer
 description: A fast, light-weight web framework to provide a simple way to fulfill the needs of many modern web server these days.
-version: 1.0.6
+version: 1.0.7
 homepage: https://github.com/salkuadrat/lucifer
 repo: https://github.com/salkuadrat/lucifer
 
@@ -18,7 +18,7 @@ dependencies:
   dart_jsonwebtoken: ^2.4.0
   mustache_template: ^2.0.0
   sanitize_html: ^2.0.0
-  cryptography: ^2.0.2
+  cryptography: ^2.0.5
   uuid: ^3.0.5
 
 dev_dependencies:
